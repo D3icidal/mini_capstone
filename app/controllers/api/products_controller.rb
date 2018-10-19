@@ -5,9 +5,16 @@ class Api::ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(name: params[:name], price: params[:price])
-    @product.save
-    render "show.json.jbuilder"
+    @product = Product.new(
+      name: params[:name],
+      price: params[:price],
+      description: params[:description]
+      )
+    if @product.save
+      render "show.json.jbuilder"
+    else
+      p "create failed - booo"
+    end
   end
 
   def show
@@ -20,12 +27,17 @@ class Api::ProductsController < ApplicationController
     @product_id = params[:id]   
     if validate_id(@product_id)      
       @product = Product.find_by(id: @product_id)
-    @product.update(
+      @product.update(
       name: params[:name] || @product.name,
       price: params[:price] || @product.price,
       description: params[:description] || @product.description || "none"
     )
-    render "show.json.jbuilder"
+      if @product.save
+        render "show.json.jbuilder"
+      else
+        p "bad update"
+        # render "bad_id.json.jbuilder"
+      end
     else
       render "bad_id.json.jbuilder"
     end

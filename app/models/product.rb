@@ -14,7 +14,7 @@ class Product < ApplicationRecord
   #  less than whatever you picked for your decimal
   validates :price, numericality: true
   validates :price, numericality: { greater_than: 0 }
-  validates :description, presence: true
+  # validates :description, presence: true
   
 
 
