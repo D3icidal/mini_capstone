@@ -1,6 +1,17 @@
 class Api::ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @search_term = params[:search_term]
+    # p @search_term
+    # @products = Product.all
+    @products = Product.where('name LIKE ?', "%#{@search_term}%") 
+    @sort_by = "id => asc"
+    if params[:sort_by] == 'price'
+      # sort by price
+      @products = @products.order(:price => :asc)
+    else
+      # sort by id
+      @products = @products.order(:id => :asc)
+    end
     render "index.json.jbuilder"
   end
 
@@ -36,7 +47,7 @@ class Api::ProductsController < ApplicationController
         render "show.json.jbuilder"
       else
         p "bad update"
-        # render "bad_id.json.jbuilder"
+        render "error.json.jbuilder"
       end
     else
       render "bad_id.json.jbuilder"
