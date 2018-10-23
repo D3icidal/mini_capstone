@@ -10,5 +10,10 @@ Rails.application.routes.draw do
     post '/products' => 'products#create'
     patch '/products/:id' => 'products#update'
     delete '/products/:id' => 'products#destroy'
+
+
+    #CRUD
+    get 'suppliers' => 'suppliers#index'
+    
   end
 end

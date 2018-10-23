@@ -41,7 +41,8 @@ class Api::ProductsController < ApplicationController
       @product.update(
       name: params[:name] || @product.name,
       price: params[:price] || @product.price,
-      description: params[:description] || @product.description || "none"
+      description: params[:description] || @product.description || "none",
+      supplier_id: params[:supplier_id] || @product.supplier_id || "none"
     )
       if @product.save
         render "show.json.jbuilder"
