@@ -22,6 +22,9 @@ class Product < ApplicationRecord
   #  at least 10 characters
     #{}`is_discounted?` that returns true if an item is under $10 and false otherwise.
 
+  def supplier
+    Supplier.find_by(id: supplier_id)
+  end
 
   def is_discounted?
     price < 10 ? true : false
