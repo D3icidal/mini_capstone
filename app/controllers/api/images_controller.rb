@@ -25,4 +25,18 @@ class Api::ImagesController < ApplicationController
       p "create failed - booo"
     end
   end
+
+  def update  
+    @image_id = params[:id]          
+    @image = Image.find_by(id: @image_id)
+    @image.update(
+    name: params[:name] || @image.name,
+    price: params[:price] || @image.price,
+    description: params[:description] || @image.description || "none",
+    supplier_id: params[:supplier_id] || @image.supplier_id || "none",
+
+  )
+    @image.save
+
+    
 end
