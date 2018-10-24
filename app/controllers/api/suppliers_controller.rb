@@ -22,8 +22,7 @@ class Api::SuppliersController < ApplicationController
       p "create failed - booo"
     end
   end
-
-  
+ 
 
   def update  
     @supplier_id = params[:id]          
@@ -39,12 +38,7 @@ class Api::SuppliersController < ApplicationController
     else
       p "bad update"
       render "error.json.jbuilder"
-    end
-  else
-    render "bad_id.json.jbuilder"
+    end  
   end
-  
-end
 
-end
 end

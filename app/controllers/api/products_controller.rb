@@ -19,7 +19,8 @@ class Api::ProductsController < ApplicationController
     @product = Product.new(
       name: params[:name],
       price: params[:price],
-      description: params[:description]
+      description: params[:description],
+      supplier_id: params[:supplier_id],
       )
     if @product.save
       render "show.json.jbuilder"

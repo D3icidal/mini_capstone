@@ -1,30 +1,16 @@
 class Product < ApplicationRecord
 
-  # What should validations should product have?
-
-  # name
-  #  presence
-  #  uniqueness
   validates :name, :price, :description, presence: true 
-
-
-  # price
-  #  presence
-  #  numericality
-  #  less than whatever you picked for your decimal
   validates :price, numericality: true
   validates :price, numericality: { greater_than: 0 }
   # validates :description, presence: true
   
+  belongs_to :supplier
+  has_many :images
 
-
-  # description
-  #  at least 10 characters
-    #{}`is_discounted?` that returns true if an item is under $10 and false otherwise.
-
-  def supplier
-    Supplier.find_by(id: supplier_id)
-  end
+  # def supplier
+  #   Supplier.find_by(id: supplier_id)
+  # end
 
   def is_discounted?
     price < 10 ? true : false
