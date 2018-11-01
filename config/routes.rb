@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
     #shopping cart - cartedproducts
     post "/cartedproducts" => "carted_products#create"
-    get "/cartedproducts" => "carted_products"
+    get "/cartedproducts" => "carted_products#index"
 
   end
 end

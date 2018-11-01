@@ -21,7 +21,7 @@ class Api::CartedProductsController < ApplicationController
       user_id: @user_id 
       )
     if current_cart.save!
-      render json: current_cart
+      render json: current_cart #todo add json page
     else
       render json: "failed to save cart"
     end
@@ -29,13 +29,13 @@ class Api::CartedProductsController < ApplicationController
 
   def index
     if current_user   #Authentication
-      puts "current user: #{current_user.name}"
+      puts "\n\tCurrent user: #{current_user.name}\n"
     else
       puts "\t BAD USER #{current_user}"
     end
-    testuser = User.second
-    puts "\n\tuser is #{testuser.name}\n\n\n"
-    
+    # testuser = User.second
+    # puts "\n\tuser is #{testuser.name}\n\n\n"
+    render json: current_user.carted_products #TODO add json page
   end
 
 end
