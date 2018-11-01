@@ -1,12 +1,21 @@
-class Product < ApplicationRecord
+class Product < ApplicationRecord 
+  #categories
+  has_many :product_categories
+  has_many :categories, through: :product_categories
 
-  validates :name, :price, :description, presence: true 
-  validates :price, numericality: true
-  validates :price, numericality: { greater_than: 0 }
-  # validates :description, presence: true
-  
+  #shopping cart
+  has_many :carted_products
+  has_many :users, through: :carted_products
+
+  #supplier
   belongs_to :supplier
+
+  #images
   has_many :images
+
+  # validates :name, :price, :description, presence: true 
+  # validates :price, numericality: true
+  # validates :price, numericality: { greater_than: 0 }
 
   # def supplier
   #   Supplier.find_by(id: supplier_id)

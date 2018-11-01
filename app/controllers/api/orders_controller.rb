@@ -1,7 +1,9 @@
 class Api::OrdersController < ApplicationController
+  before_action :authenticate_user
   protect_from_forgery with: :null_session
+
   def create
-    p current_user.name * 5
+    # p current_user.name * 5
     product = Product.find_by(id: params[:product_id])
     quantity = params[:quantity].to_i
     subtotal = 1.11
@@ -21,7 +23,11 @@ class Api::OrdersController < ApplicationController
     if @order.save
       # render json: "order created" * 5
       puts "\t\torder created #{@order}"
-      render "show.json.jbuilder"
+      # if current_user
+        render "show.json.jbuilder"
+      # else
+      #   render json: [], status: :unauthorized
+      # end
     else
       render json: "failed"
       p "create failed - booo" * 5
@@ -29,16 +35,16 @@ class Api::OrdersController < ApplicationController
   end
 
   def index
-      puts " \t****** Current user logged in: #{current_user.name}"
-      p 'current_user'
-      p current_user.name
-      p current_user #shows who is logged in (to verify authorization token)
-      if current_user
+      # puts " \t****** Current user logged in: #{current_user.name}"
+      # p 'current_user'
+      # p current_user.name
+      # p current_user #shows who is logged in (to verify authorization token)
+      # if current_user
         @orders = current_user.orders
         render "index.json.jbuilder"
-      else
-        render json: "go away"
-      end
+      # else
+        # render json: [], status: :unauthorized
+      # end
   end
 
   def show
@@ -47,7 +53,7 @@ class Api::OrdersController < ApplicationController
     if @order.user_id == current_user.id
       render "show.json.jbuilder"
     else
-      render json: "boooo"
+      render json: [], status: :unauthorized    
     end
   end
 

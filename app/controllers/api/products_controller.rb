@@ -1,22 +1,25 @@
 class Api::ProductsController < ApplicationController
+  before_action :authenticate_admin, only: [:create, :update, :destroy]
+  # before_action :authenticate_admin, except: [:index, :show]
+
   def index
-      puts " \t****** Current user logged in: #{current_user.name}"
-      p 'current_user'
-      p current_user.name
-      p current_user #shows who is logged in (to verify authorization token)
-      @search_term = params[:search_term]
-      # p @search_term
-      # @products = Product.all
-      @products = Product.where('name LIKE ?', "%#{@search_term}%") 
-      @sort_by = "id => asc"
-      if params[:sort_by] == 'price'
-        # sort by price
-        @products = @products.order(:price => :asc)
-      else
-        # sort by id
-        @products = @products.order(:id => :asc)
-      end
-      render "index.json.jbuilder"
+    puts " \t****** Current user logged in: #{current_user.name}"
+    p 'current_user'
+    p current_user.name
+    p current_user #shows who is logged in (to verify authorization token)
+    @search_term = params[:search_term]
+    # p @search_term
+    # @products = Product.all
+    @products = Product.where('name LIKE ?', "%#{@search_term}%") 
+    @sort_by = "id => asc"
+    if params[:sort_by] == 'price'
+      # sort by price
+      @products = @products.order(:price => :asc)
+    else
+      # sort by id
+      @products = @products.order(:id => :asc)
+    end
+    render "index.json.jbuilder"
   end
 
   def create
