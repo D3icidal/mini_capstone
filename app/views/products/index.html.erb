@@ -1,0 +1,10 @@
+<h1>Header line 1</h1><br>
+
+<% @products.each do |product| %>
+  <p>Name: <%= product.name %></p>
+  <p>Description: <%= product.description %>
+  <p>Price: <%=product.price %></p>
+  <img src="<%= product.images %>">
+  <hr>
+  <br>
+<% end %>
