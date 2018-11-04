@@ -1,0 +1,12 @@
+show.html.erb
+<h2>Here is the information for one product</h2>
+ <!-- go to the index page -->
+<a href="/products">what the user sees</a>
+ <p><%= @product.id %></p>
+<h3>name: <%= @product.name %></h3>
+<p>descriptiuon: <%= @product.description %></p>
+<p>Price: <%=@product.price %></p>
+<p>Supplier: <%=@product.supplier %></p>
+
+<p>image_url: <%= @product.images.first.url %></p>
+<img src="<%= @product.images.first.url %>">
