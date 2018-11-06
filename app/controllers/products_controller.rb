@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  #/products    HTML
   def index
     @products = Product.all
     # render json: "hello world"
@@ -29,5 +30,29 @@ class ProductsController < ApplicationController
     redirect_to "/products"
   end
 
+  def edit
+    @product = Product.find_by(id: params[:id])
+    # if Product.find_by(id: params[:id])
+    #   render edit.html.erb
+    # else
+    #   render json: "Could not find product ID: #{params[:id]}"
+    # end
+  end
+
+  def update
+    @product = Product.find_by(id: params[:id])
+    @product.name = params[:name] || @product.name
+    @product.description = params[:description] || @product.price
+    @product.price = params[:price] || @product.price
+    @product.supplier_id = params[:supplier_id] || @product.supplier_id
+    @product.save
+    redirect_to "/products/#{@product.id}"
+  end
+
+  def destroy
+    @product = Product.find_by(id: params[:id])
+    @product.destroy
+    redirect_to "/products"
+  end
 
 end
