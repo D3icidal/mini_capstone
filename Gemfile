@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
-
+group :development do
+  gem 'meta_request'
+end
 gem 'jwt'
 gem 'seed_dump'
 gem 'awesome_print'
