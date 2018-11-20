@@ -1,5 +1,30 @@
 {
   "name": "mini_capstone",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "moment": "^2.22.2",
+    "tone": "^13.3.11",
+    "axios": "^0.18.0",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1"
+  },
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D3icidal/mini_capstone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/D3icidal/mini_capstone/issues"
+  },
+  "homepage": "https://github.com/D3icidal/mini_capstone#readme"
 }

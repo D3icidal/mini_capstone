@@ -5,6 +5,8 @@ ruby '2.5.1'
 group :development do
   gem 'meta_request'
 end
+
+gem 'rack-cors', require: 'rack/cors'
 gem 'jwt'
 gem 'seed_dump'
 gem 'awesome_print'

@@ -3,10 +3,10 @@ class Api::ProductsController < ApplicationController
   # before_action :authenticate_admin, except: [:index, :show]
 
   def index
-    puts " \t****** Current user logged in: #{current_user.name}"
-    p 'current_user'
-    p current_user.name
-    p current_user #shows who is logged in (to verify authorization token)
+    # puts " \t****** Current user logged in: #{current_user.name}"
+    # p 'current_user'
+    # p current_user.name
+    # p current_user #shows who is logged in (to verify authorization token)
     @search_term = params[:search_term]
     # p @search_term
     # @products = Product.all
