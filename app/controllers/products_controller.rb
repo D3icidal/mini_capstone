@@ -7,11 +7,14 @@ class ProductsController < ApplicationController
   end
 
   def new #input form
-    # render json: "hellow world - new"
+    render json: "hellow world - new"
     render "new.html.erb"
   end
 
   def show
+    if current_user
+      puts "\n\n\tCURRENT USERL #{current_user}\n"
+    end
     # render json: "hello world -show"
     @product = Product.find_by(id: params[:id])
     render 'show.html.erb'

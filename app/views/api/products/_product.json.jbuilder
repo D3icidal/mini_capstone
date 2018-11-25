@@ -1,6 +1,7 @@
 json.id product.id
-json.title product.name
-json.desc product.description
+json.name product.name
+json.description product.description
+json.price product.price
 json.tax product.tax
 json.total product.total
 json.supplier product.supplier
